@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+        section {
+            padding: 20px;
+        }
+        .doctor-list, .appointment-form {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .doctor {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Sanskar's Clinic</h1>
+        <p>Book your appointment with our experienced doctors</p>
+    </header>
+
+    <section class="doctor-list">
+        <h2>Available Doctors</h2>
+        <div class="doctor">👨‍⚕️ Dr. Anvesha Pandey - Cardiologist</div>
+        <div class="doctor">👩‍⚕️ Dr. Aayush Mishra - Dermatologist</div>
+        <div class="doctor">👨‍⚕️ Dr. Vaidehi Pardeshi - Neurologist</div>
+    </section>
+
+    <section class="appointment-form">
+        <h2>Book an Appointment</h2>
+        <form id="appointmentForm">
+            <label for="patientName">Patient's Name:</label>
+            <input type="text" id="patientName" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" min="0" required>
+
+            <label for="sex">Sex:</label>
+            <select id="sex">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="medicalRecords">Previous Medical Records:</label>
+            <textarea id="medicalRecords" rows="3" placeholder="Brief medical history" ></textarea>
+
+            <label for="allergies">Any Allergies:</label>
+            <textarea id="allergies" rows="2" placeholder="Mention any allergies"></textarea>
+
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor">
+                <option value="Dr. John Doe - Cardiologist">Dr. Anvesha Pandey - Cardiologist</option>
+                <option value="Dr. Jane Smith - Dermatologist">Dr. Aayush Mishra - Dermatologist</option>
+                <option value="Dr. Mike Johnson - Neurologist">Dr. Vaidehi Pardeshi - Neurologist</option>
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" required>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("patientName").value;
+            const age = document.getElementById("age").value;
+            const sex = document.getElementById("sex").value;
+            const medicalRecords = document.getElementById("medicalRecords").value;
+            const allergies = document.getElementById("allergies").value;
+            const doctor = document.getElementById("doctor").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+
+            if (name && age && date && time) {
+                alert(`Appointment Confirmed! ✅
+                
+Patient Name: ${name}
+Age: ${age} | Sex: ${sex}
+Doctor: ${doctor}
+Date: ${date} | Time: ${time}
+Medical History: ${medicalRecords || "Not Provided"}
+Allergies: ${allergies || "None"}
+
+Thank you for booking with us!`);
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+    </script>
+
+</body>
+</html>
